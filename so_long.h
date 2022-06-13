@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/06/12 18:59:46 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/06/12 20:29:13 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define KEY_S			1
 # define KEY_D			2
 
+typedef struct s_map{
+	int	row;
+	int	column;
+}				t_map;
 typedef struct s_param{
 	int	x;
 	int	y;
