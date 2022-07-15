@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 16:56:55 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/06/12 20:48:12 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/15 18:26:34 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 typedef struct s_list
 {
 	void			*content;
@@ -65,5 +68,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		gnl_strchr(const char *s);
+void	gnl_strlcpy(char *dst, const char *src, int dstsize);
+char	*gnl_strjoin(char *s1, char *s2);
+void	gnl_bzero(char *backup);
+char	*get_line(char *line_merged, char *backup);
+char	*get_until_newline(char *line_merged, char *backup);
+char	*get_next_line(int fd);
 
 #endif
