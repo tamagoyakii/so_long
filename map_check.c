@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_validity.c                                   :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:43:14 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 14:51:53 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 15:31:31 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_component(t_map *map_info)
 			if (c == '0' || c == '1')
 				continue ;
 			else if (c == 'C' || c == 'E' || c == 'P')
-				add_count(c, count, map_info, col, row);
+				add_count(c, count, map_info, row, col);
 			else
 				error_exit("Invalid component included");
 		}
@@ -73,20 +73,20 @@ void	check_component(t_map *map_info)
 		error_exit("Wrong number of components");
 }
 
-void	add_count(char c, int *count, t_map *map_info, int x, int y)
+void	add_count(char c, int *count, t_map *map_info, int row, int col)
 {
 	if (c == 'E')
 		count[0]++;
 	if (c == 'C')
 	{
 		count[1]++;
-		map_info->cltv = count[1];
+		map_info->food = count[1];
 	}
 	if (c == 'P')
 	{
 		count[2]++;
-		map_info->player_x = x;
-		map_info->player_y = y;
+		map_info->p_row = row;
+		map_info->p_col = col;
 	}
 
 }

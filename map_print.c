@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_print.c                                        :+:      :+:    :+:   */
+/*   map_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:48:58 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 14:51:28 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 16:18:16 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_img(void *mlx_ptr, t_img *img)
 
 	px = PX;
 	img->plyr = mlx_xpm_file_to_image(mlx_ptr, IMG_P, &px, &px);
-	img->cltv = mlx_xpm_file_to_image(mlx_ptr, IMG_C, &px, &px);
+	img->food = mlx_xpm_file_to_image(mlx_ptr, IMG_C, &px, &px);
 	img->wall = mlx_xpm_file_to_image(mlx_ptr, IMG_1, &px, &px);
 	img->emty = mlx_xpm_file_to_image(mlx_ptr, IMG_0, &px, &px);
 	img->exit = mlx_xpm_file_to_image(mlx_ptr, IMG_E, &px, &px);
@@ -31,9 +31,9 @@ void	put_img(char c, t_win *win, t_img *img, int x, int y)
 	else if (c == '1')
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->wall, x, y);
 	else if (c == 'C')
-		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->cltv, x, y);
+		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->food, x, y);
 	else if (c == 'E')
-		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->emty, x, y);
+		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->exit, x, y);
 	else if (c == 'P')
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, img->plyr, x, y);
 }

@@ -6,11 +6,20 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 14:49:55 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 16:12:37 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	error_exit(char *str)
+{
+	if (str)
+		printf("Error\n%s", str);
+	else
+		perror("Error\n");
+	exit(1);
+}
 
 void	show_win(t_info *info)
 {
@@ -18,6 +27,8 @@ void	show_win(t_info *info)
 	info->win.win_ptr = mlx_new_window(info->win.mlx_ptr,
 		info->map.col * PX, info->map.row * PX, "so_long");
 	print_map(&info->map, &info->win, &info->img);
+	mlx_hook(info->win.win_ptr, 3, 0, key_release, info);
+	mlx_hook(info->win.win_ptr, 17, 0, close_win, &info->win);
 	mlx_loop(info->win.mlx_ptr);
 }
 

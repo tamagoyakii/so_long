@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/17 15:00:10 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/17 15:58:34 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MLXLIB = $(MLX_DIR)/libmlx.a
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = main.c utils.c map_parse.c map_check.c map_print.c operate.c
+SRCS = main.c map_parse.c map_check.c map_print.c operate.c
 
 OBJS = $(SRCS:.c=.o)
 
