@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/15 18:33:43 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/16 17:07:42 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MLXLIB = $(MLX_DIR)/libmlx.a
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = main.c utils.c
+SRCS = main.c utils.c map_parse.c check_validity.c 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -34,7 +34,6 @@ VPATH = $(shell ls -R)
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLXLIB)
-			cp $(MLXLIB) ./
 			$(CC) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) -lft $(OBJS) -o $@
 
 $(LIBFT) : 

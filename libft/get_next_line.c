@@ -6,85 +6,102 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:10:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/14 17:06:35 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/15 20:38:06 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	gnl_bzero(char *backup)
+int	ft_find(char *newline, char c)
 {
-	int	index;
+	int			i;
 
-	index = -1;
-	while (backup[++index])
-		backup[index] = 0;
+	i = 0;
+	while (newline[i])
+	{
+		if (newline[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-char	*get_line(char *line_merged, char *backup)
+int	in_line(char **newline, char **line, int i)
 {
-	char	*line;
-	int		line_len;
+	char		*ret;
 
-	if (!line_merged)
-		return (0);
-	line_len = gnl_strchr(line_merged);
-	line = (char *)malloc(sizeof(char) * (line_len + 1));
-	if (!line)
+	(*newline)[i] = 0;
+	*line = ft_strdup(*newline);
+	if (!*line)
+		return (-1);
+	ret = ft_strdup(*newline + i + 1);
+	if (!ret)
+		return (-1);
+	free(*newline);
+	*newline = ret;
+	return (1);
+}
+
+int	backup(char **newline, char **line, int r)
+{
+	int			new_idx;
+
+	if (r < 0)
+		return (-1);
+	if (*newline == 0)
 	{
-		free(line_merged);
-		line_merged = 0;
+		*line = ft_strdup("");
 		return (0);
 	}
-	gnl_strlcpy(line, line_merged, line_len + 1);
-	gnl_strlcpy(backup, line_merged + line_len,
-		ft_strlen(line_merged) - line_len + 1);
-	free(line_merged);
-	line_merged = 0;
-	return (line);
+	new_idx = ft_find(*newline, '\n');
+	if (new_idx >= 0)
+		return (in_line(newline, line, new_idx));
+	*line = ft_strdup(*newline);
+	if (!*line)
+		return (-1);
+	free(*newline);
+	*newline = 0;
+	return (0);
 }
 
-char	*get_until_newline(char *line_merged, char *backup)
+int	buf_temp(char *buf, char **newline, int rd_size, int *new_idx)
 {
-	char	*ret;
+	char		*temp;
 
-	ret = 0;
-	if (!line_merged)
-		line_merged = gnl_strjoin("", "");
-	if (!line_merged)
-		return (0);
-	if (gnl_strchr(line_merged))
-		return (line_merged);
-	ret = gnl_strjoin(line_merged, backup);
-	gnl_bzero(backup);
-	free(line_merged);
-	line_merged = 0;
-	return (ret);
+	buf[rd_size] = 0;
+	temp = ft_strjoin(*newline, buf);
+	if (!temp)
+		return (-1);
+	free(*newline);
+	*newline = temp;
+	*new_idx = ft_find(*newline, '\n');
+	return (0);
 }
 
-char	*get_next_line(int fd)
+int	get_next_line(int fd, char **line)
 {
-	static char	backup[BUFFER_SIZE];
-	char		*line_merged;
-	int			bytes_read;
+	static char	*newline[OPEN_MAX];
+	char		*buf;
+	int			rd_size;
+	int			new_idx;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	bytes_read = 1;
-	if (backup[0] == 0)
-		bytes_read = read(fd, backup, BUFFER_SIZE);
-	if (bytes_read <= 0)
-		return (0);
-	line_merged = 0;
-	while (bytes_read > 0)
+	if (!line || fd < 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
+		return (-1);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (-1);
+	rd_size = read(fd, buf, BUFFER_SIZE);
+	while (rd_size > 0)
 	{
-		line_merged = get_until_newline(line_merged, backup);
-		if (!line_merged)
-			return (0);
-		if (gnl_strchr(line_merged))
-			return (get_line(line_merged, backup));
-		if (backup[0] == 0)
-			bytes_read = read(fd, backup, BUFFER_SIZE);
+		if (buf_temp(buf, &newline[fd], rd_size, &new_idx) < 0)
+			return (-1);
+		if (new_idx >= 0)
+		{
+			free(buf);
+			return (in_line(&newline[fd], line, new_idx));
+		}
+		rd_size = read(fd, buf, BUFFER_SIZE);
 	}
-	return (line_merged);
+	free(buf);
+	return (backup(&newline[fd], line, rd_size));
 }
