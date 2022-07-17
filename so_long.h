@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 13:24:37 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:51:10 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 typedef struct s_img{
 	void	*plyr;
-	void	*coll;
+	void	*cltv;
 	void	*wall;
 	void	*emty;
 	void	*exit;
@@ -46,10 +46,10 @@ typedef struct s_img{
 typedef struct s_map{
 	char	**map;
 	int		row;
-	int		column;
+	int		col;
 	int		player_x;
 	int		player_y;
-	int		collectible;
+	int		cltv;
 	int		step;
 }				t_map;
 typedef struct s_win{
@@ -62,18 +62,17 @@ typedef struct s_info{
 	t_img	img;
 }				t_info;
 
+void	show_win(t_info *info);
 int		get_row(t_map *map, char *map_name);
 void	get_map(t_map *map, char *map_name, int fd);
 void	map_parse(t_info *info, char *map_name);
-void	error_exit(char *str);
 void	check_ber(char *map_name);
 void	check_boundary(t_map *map);
-void	get_object_count(int *count, t_map *map);
-void	get_player_position(int *count, t_map *map, int x, int y);
 void	check_component(t_map *map);
+void	add_count(char c, int *count, t_map *map_info, int x, int y)
 void	set_img(void *mlx_ptr, t_img *img);
 void	put_img(char c, t_win *win, t_img *img, int x, int y);
 void	print_map(t_map *map_info, t_win *win, t_img *img);
-void	show_window(t_info *info);
+void	error_exit(char *str);
 
 #endif

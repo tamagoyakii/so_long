@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:23:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 13:25:43 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:42:00 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@ int	get_row(t_map *map_info, char *map_name)
 {
 	int		fd;
 	char	buf;
-	int		bytes_read;
+	int		res;
 
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		error_exit(0);
 	map_info->row = 0;
-	bytes_read = read(fd, &buf, 1);
-	while (bytes_read > 0)
+	res = read(fd, &buf, 1);
+	while (res > 0)
 	{
 		if (buf == '\n')
 			map_info->row++;
-		bytes_read = read(fd, &buf, 1);
+		res = read(fd, &buf, 1);
 	}
 	close(fd);
-	if (bytes_read == -1)
+	if (res == -1)
 		error_exit(0);
 	return (map_info->row);
 }
 
 void	get_map(t_map *map_info, char *map_name, int fd)
 {
-	int		index;
+	int		idx;
 	size_t	row_len;
 
 	map_info->row = get_row(map_info, map_name);
@@ -47,16 +47,16 @@ void	get_map(t_map *map_info, char *map_name, int fd)
 	if (get_next_line(fd, &(map_info->map[0])) >= 0)
 	{
 		row_len = ft_strlen(map_info->map[0]);
-		index = 1;
-		while (index < map_info->row && get_next_line(fd, &(map_info->map[index])) >= 0)
+		idx = 1;
+		while (idx < map_info->row && get_next_line(fd, &(map_info->map[idx])) >= 0)
 		{
-			if (ft_strlen(map_info->map[index]) != row_len)
-				error_exit("Invalid map");
-			index++;
+			if (ft_strlen(map_info->map[idx]) != row_len)
+				error_exit("Map must be rectangle");
+			idx++;
 		}
-		if (index == map_info->row)
+		if (idx == map_info->row)
 		{
-			map_info->column = row_len;
+			map_info->col = row_len;
 			return ;
 		}
 	}

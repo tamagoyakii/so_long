@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:43:14 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 13:30:48 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:51:53 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,68 +24,69 @@ void	check_ber(char *map_name)
 	}
 	else
 		error_exit("Invalid map extention");
-	return ;
 }
 
-void	check_boundary(t_map *map)
+void	check_boundary(t_map *map_info)
 {
 	int	row;
-	int	column;
+	int	col;
 
-	column = -1;
-	while (++column < map->column)
+	col = -1;
+	while (++col < map_info->col)
 	{
-		if (map->map[0][column] != '1'
-			|| map->map[map->row - 1][column] != '1')
+		if (map_info->map[0][col] != '1'
+			|| map_info->map[map_info->row - 1][col] != '1')
 			error_exit("The player might run away!");
 	}
 	row = -1;
-	while (++row < map->row)
+	while (++row < map_info->row)
 	{
-		if (map->map[row][0] != '1'
-			|| map->map[row][map->column - 1] != '1')
+		if (map_info->map[row][0] != '1'
+			|| map_info->map[row][map_info->col - 1] != '1')
 			error_exit("The player might run away!");
 	}
-	return ;
 }
 
-void	get_object_count(int *count, t_map *map)
-{
-	(*count)++;
-	map->collectible = *count;
-}
-
-void	get_player_position(int *count, t_map *map, int x, int y)
-{
-	(*count)++;
-	map->player_x = x;
-	map->player_y = y;
-}
-
-void	check_component(t_map *map)
+void	check_component(t_map *map_info)
 {
 	int			row;
-	int			column;
+	int			col;
 	static int	count[3];
+	char		c;
 
 	row = -1;
-	while (map->map[++row])
+	while (map_info->map[++row])
 	{
-		column = -1;
-		while (map->map[row][++column])
+		col = -1;
+		while (map_info->map[row][++col])
 		{
-			if (map->map[row][column] == '0' || map->map[row][column] == '1')
+			c = map_info->map[row][col];
+			if (c == '0' || c == '1')
 				continue ;
-			else if (map->map[row][column] == 'C')
-				get_object_count(&count[0], map);
-			else if (map->map[row][column] == 'E')
-				count[1]++;
-			else if (map->map[row][column] == 'P')
-				get_player_position(&count[2], map, column, row);
+			else if (c == 'C' || c == 'E' || c == 'P')
+				add_count(c, count, map_info, col, row);
 			else
 				error_exit("Invalid component included");
 		}
 	}
-	if (count[0] < 1 || count[1] != 1 || count[2] != 1)
-		error_exit("Invalid component included");
+	if (count[0] != 1 || count[1] < 1 || count[2] != 1)
+		error_exit("Wrong number of components");
+}
+
+void	add_count(char c, int *count, t_map *map_info, int x, int y)
+{
+	if (c == 'E')
+		count[0]++;
+	if (c == 'C')
+	{
+		count[1]++;
+		map_info->cltv = count[1];
+	}
+	if (c == 'P')
+	{
+		count[2]++;
+		map_info->player_x = x;
+		map_info->player_y = y;
+	}
+
 }
