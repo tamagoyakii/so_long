@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:43:14 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 16:55:27 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:21:56 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	check_component(t_map *map_info)
 	static int	count[3];
 	char		c;
 
+	map_info->food = 0;
+	map_info->step = 0;
 	row = -1;
 	while (map_info->map[++row])
 	{
