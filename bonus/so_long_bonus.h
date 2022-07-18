@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 21:10:10 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:45:48 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-# include "./libft/libft.h"
-# include "./mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
@@ -30,11 +30,11 @@
 # define KEY_D		2
 
 # define PX			32
-# define IMG_P		"./images/player.xpm"
-# define IMG_C		"./images/collectible.xpm"
-# define IMG_1		"./images/wall.xpm"
-# define IMG_0		"./images/empty.xpm"
-# define IMG_E		"./images/exit.xpm"
+# define IMG_P		"../images/player.xpm"
+# define IMG_C		"../images/collectible.xpm"
+# define IMG_1		"../images/wall.xpm"
+# define IMG_0		"../images/empty.xpm"
+# define IMG_E		"../images/exit.xpm"
 
 typedef struct s_img{
 	void	*plyr;
