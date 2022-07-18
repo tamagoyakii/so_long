@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/17 15:58:34 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/18 19:42:17 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,17 +44,15 @@ $(MLXLIB) :
 
 clean :
 	$(RM) $(RM_FLAGS) $(OBJS)
+	@make -sC $(MLX_DIR) clean
+	@make -sC $(LIBFT_DIR) clean
 
 fclean : clean mclean
 	$(RM) $(RM_FLAGS) $(NAME)
 	$(RM) $(RM_FLAGS) $(MLXLIB)
 	$(RM) $(RM_FLAGS) $(LIBFT)
 
-mclean :
-	@make -sC $(MLX_DIR) clean
-	@make -sC $(LIBFT_DIR) clean
-
 re : fclean
 	make
 
-.PHONY : all clean fclean mclean re
+.PHONY : all clean fclean re
