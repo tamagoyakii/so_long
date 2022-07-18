@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 16:16:07 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:09:23 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	alert(t_win *win, t_map *map_info)
 {
 	if (map_info->food == 0)
 	{
+		map_info->step += 1;
+		printf("Steps : %d\n", map_info->step);
 		printf("Mission Complete!\n");
 		close_win(win);
 	}
@@ -25,18 +27,16 @@ void	alert(t_win *win, t_map *map_info)
 
 void	move(t_win *win, t_map *map_info, int row, int col)
 {
-	char	from;
 	char	to;
 
-	from = map_info->map[map_info->p_row][map_info->p_col];
-	to =  map_info->map[map_info->p_row + row][map_info->p_col + col];
+	to = map_info->map[map_info->p_row + row][map_info->p_col + col];
 	if (to != '1')
 	{
 		if (to == 'E')
 			alert(win, map_info);
 		if (to == 'C')
 			map_info->food -= 1;
-		if (!(to == 'E') && map_info->food != 0)
+		if (!(to == 'E' && map_info->food != 0))
 		{
 			map_info->map[map_info->p_row][map_info->p_col] = '0';
 			map_info->p_row += row;
@@ -67,5 +67,6 @@ int	close_win(t_win *win)
 {
 	mlx_clear_window(win->mlx_ptr, win->win_ptr);
 	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+	printf("See you later!\n");
 	exit(0);
 }

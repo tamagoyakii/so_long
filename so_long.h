@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 16:14:02 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:10:12 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	map_parse(t_info *info, char *map_name);
 void	check_ber(char *map_name);
 void	check_boundary(t_map *map);
 void	check_component(t_map *map);
-void	add_count(char c, int *count, t_map *map_info, int x, int y);
+void	add_count(int *count, t_map *map_info, int x, int y);
 void	set_img(void *mlx_ptr, t_img *img);
-void	put_img(char c, t_win *win, t_img *img, int x, int y);
-void	print_map(t_map *map_info, t_win *win, t_img *img);
+void	put_img(t_info *info, int row, int col);
+int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
 void	move(t_win *win, t_map *map_info, int row, int col);
 int		key_release(int keycode, t_info *info);

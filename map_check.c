@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:43:14 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 15:31:31 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:55:27 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_component(t_map *map_info)
 			if (c == '0' || c == '1')
 				continue ;
 			else if (c == 'C' || c == 'E' || c == 'P')
-				add_count(c, count, map_info, row, col);
+				add_count(count, map_info, row, col);
 			else
 				error_exit("Invalid component included");
 		}
@@ -73,20 +73,19 @@ void	check_component(t_map *map_info)
 		error_exit("Wrong number of components");
 }
 
-void	add_count(char c, int *count, t_map *map_info, int row, int col)
+void	add_count(int *count, t_map *map_info, int row, int col)
 {
-	if (c == 'E')
+	if (map_info->map[row][col] == 'E')
 		count[0]++;
-	if (c == 'C')
+	if (map_info->map[row][col] == 'C')
 	{
 		count[1]++;
 		map_info->food = count[1];
 	}
-	if (c == 'P')
+	if (map_info->map[row][col] == 'P')
 	{
 		count[2]++;
 		map_info->p_row = row;
 		map_info->p_col = col;
 	}
-
 }

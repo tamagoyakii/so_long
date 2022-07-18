@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:23:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 14:42:00 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:56:30 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	get_map(t_map *map_info, char *map_name, int fd)
 	{
 		row_len = ft_strlen(map_info->map[0]);
 		idx = 1;
-		while (idx < map_info->row && get_next_line(fd, &(map_info->map[idx])) >= 0)
+		while (idx < map_info->row
+			&& get_next_line(fd, &(map_info->map[idx])) >= 0)
 		{
 			if (ft_strlen(map_info->map[idx]) != row_len)
 				error_exit("Map must be rectangle");

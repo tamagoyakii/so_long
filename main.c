@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/17 16:12:37 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:53:10 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	show_win(t_info *info)
 {
 	info->win.mlx_ptr = mlx_init();
 	info->win.win_ptr = mlx_new_window(info->win.mlx_ptr,
-		info->map.col * PX, info->map.row * PX, "so_long");
-	print_map(&info->map, &info->win, &info->img);
+			info->map.col * PX, info->map.row * PX, "so_long");
+	set_img(info->win.mlx_ptr, &info->img);
+	print_map(info);
 	mlx_hook(info->win.win_ptr, 3, 0, key_release, info);
 	mlx_hook(info->win.win_ptr, 17, 0, close_win, &info->win);
+	mlx_loop_hook(info->win.mlx_ptr, print_map, info);
 	mlx_loop(info->win.mlx_ptr);
 }
 
