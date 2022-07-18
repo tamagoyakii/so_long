@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:50:18 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:13:30 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	key_press(int keycode, t_info *info)
 		move(&info->win, &info->map, 0, 1);
 	else if (keycode == 53)
 		close_win(&info->win);
+	print_map(info);
 	return (0);
 }
 

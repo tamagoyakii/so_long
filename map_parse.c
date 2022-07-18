@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:23:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:31:55 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:21:49 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	get_row(char *map_name)
 void	get_map(t_map *map_info, char *map_name, int fd)
 {
 	int		idx;
-	size_t	row_len;
 
 	map_info->row = get_row(map_name);
 	map_info->map = (char **)ft_calloc(map_info->row + 1, sizeof(char *));
@@ -47,20 +46,17 @@ void	get_map(t_map *map_info, char *map_name, int fd)
 		error_exit(0);
 	if (get_next_line(fd, &(map_info->map[0])) >= 0)
 	{
-		row_len = ft_strlen(map_info->map[0]);
+		map_info->col = ft_strlen(map_info->map[0]);
 		idx = 1;
 		while (idx < map_info->row
 			&& get_next_line(fd, &(map_info->map[idx])) >= 0)
 		{
-			if (ft_strlen(map_info->map[idx]) != row_len)
+			if ((int)ft_strlen(map_info->map[idx]) != map_info->col)
 				error_exit("Map must be rectangle");
 			idx++;
 		}
 		if (idx == map_info->row)
-		{
-			map_info->col = row_len;
 			return ;
-		}
 	}
 	error_exit("Map parsing failed");
 }

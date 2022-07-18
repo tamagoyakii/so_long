@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:50:40 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:52:53 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define X_EVENT_KEY_PRESS			2
+# define X_EVENT_KEY_PRESS	2
 
-# define KEY_ESC		53
-# define KEY_W			13
-# define KEY_A			0
-# define KEY_S			1
-# define KEY_D			2
+# define KEY_ESC	53
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
 
-# define PX				32
-# define IMG_P			"./images/player.xpm"
-# define IMG_C			"./images/collectible.xpm"
-# define IMG_1			"./images/wall.xpm"
-# define IMG_0			"./images/empty.xpm"
-# define IMG_E			"./images/exit.xpm"
+# define PX			32
+# define IMG_P		"./images/player.xpm"
+# define IMG_C		"./images/collectible.xpm"
+# define IMG_1		"./images/wall.xpm"
+# define IMG_0		"./images/empty.xpm"
+# define IMG_E		"./images/exit.xpm"
 
 typedef struct s_img{
 	void	*plyr;
