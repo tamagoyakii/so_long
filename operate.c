@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:43:46 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:50:18 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 	}
 }
 
-int	key_release(int keycode, t_info *info)
+int	key_press(int keycode, t_info *info)
 {
 	if (keycode == 13)
 		move(&info->win, &info->map, -1, 0);

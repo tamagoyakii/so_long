@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:48:20 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:50:40 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -78,7 +77,7 @@ int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
 void	map_change(t_map *map_info, int row, int col);
 void	move(t_win *win, t_map *map_info, int row, int col);
-int		key_release(int keycode, t_info *info);
+int		key_press(int keycode, t_info *info);
 int		close_win(t_win *win);
 
 #endif
