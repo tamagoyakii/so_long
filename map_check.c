@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:43:14 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:21:56 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:45:26 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ void	check_component(t_map *map_info)
 void	add_count(int *count, t_map *map_info, int row, int col)
 {
 	if (map_info->map[row][col] == 'E')
-		count[0]++;
+		count[0] += 1;
 	if (map_info->map[row][col] == 'C')
 	{
-		count[1]++;
+		count[1] += 1;
 		map_info->food = count[1];
 	}
 	if (map_info->map[row][col] == 'P')
 	{
-		count[2]++;
+		count[2] += 1;
 		map_info->p_row = row;
 		map_info->p_col = col;
 	}

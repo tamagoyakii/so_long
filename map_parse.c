@@ -6,33 +6,34 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:23:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 16:56:30 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:31:55 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	get_row(t_map *map_info, char *map_name)
+int	get_row(char *map_name)
 {
 	int		fd;
-	char	buf;
+	int		row;
 	int		res;
+	char	buf;
 
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		error_exit(0);
-	map_info->row = 0;
+	row = 0;
 	res = read(fd, &buf, 1);
 	while (res > 0)
 	{
 		if (buf == '\n')
-			map_info->row++;
+			row++;
 		res = read(fd, &buf, 1);
 	}
 	close(fd);
 	if (res == -1)
 		error_exit(0);
-	return (map_info->row);
+	return (row);
 }
 
 void	get_map(t_map *map_info, char *map_name, int fd)
@@ -40,7 +41,7 @@ void	get_map(t_map *map_info, char *map_name, int fd)
 	int		idx;
 	size_t	row_len;
 
-	map_info->row = get_row(map_info, map_name);
+	map_info->row = get_row(map_name);
 	map_info->map = (char **)ft_calloc(map_info->row + 1, sizeof(char *));
 	if (!(map_info->map))
 		error_exit(0);

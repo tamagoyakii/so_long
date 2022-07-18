@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:09:23 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:43:46 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,21 @@ void	alert(t_win *win, t_map *map_info)
 	if (map_info->food == 0)
 	{
 		map_info->step += 1;
-		printf("Steps : %d\n", map_info->step);
-		printf("Mission Complete!\n");
+		printf("Steps: %d\nMission Complete!\n", map_info->step);
 		close_win(win);
 	}
 	else
 		printf("There are still a few crickets left.\n");
+}
+
+void	map_change(t_map *map_info, int row, int col)
+{
+	map_info->map[map_info->p_row][map_info->p_col] = '0';
+	map_info->map[map_info->p_row + row][map_info->p_col + col] = 'P';
+	map_info->p_row += row;
+	map_info->p_col += col;
+	map_info->step += 1;
+	printf("Steps: %d\n", map_info->step);
 }
 
 void	move(t_win *win, t_map *map_info, int row, int col)
@@ -34,16 +43,12 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 	{
 		if (to == 'E')
 			alert(win, map_info);
+		if (to == '0')
+			map_change(map_info, row, col);
 		if (to == 'C')
-			map_info->food -= 1;
-		if (!(to == 'E' && map_info->food != 0))
 		{
-			map_info->map[map_info->p_row][map_info->p_col] = '0';
-			map_info->p_row += row;
-			map_info->p_col += col;
-			map_info->map[map_info->p_row][map_info->p_col] = 'P';
-			map_info->step += 1;
-			printf("Steps : %d\n", map_info->step);
+			map_change(map_info, row, col);
+			map_info->food -= 1;
 		}
 	}
 }

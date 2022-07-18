@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 18:10:12 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:48:20 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_info{
 
 void	error_exit(char *str);
 void	show_win(t_info *info);
-int		get_row(t_map *map, char *map_name);
+int		get_row(char *map_name);
 void	get_map(t_map *map, char *map_name, int fd);
 void	map_parse(t_info *info, char *map_name);
 void	check_ber(char *map_name);
@@ -76,6 +76,7 @@ void	set_img(void *mlx_ptr, t_img *img);
 void	put_img(t_info *info, int row, int col);
 int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
+void	map_change(t_map *map_info, int row, int col);
 void	move(t_win *win, t_map *map_info, int row, int col);
 int		key_release(int keycode, t_info *info);
 int		close_win(t_win *win);
