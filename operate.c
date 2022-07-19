@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 19:13:30 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 23:47:14 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 
 int	key_press(int keycode, t_info *info)
 {
-	if (keycode == 13)
+	if (keycode == KEY_W)
 		move(&info->win, &info->map, -1, 0);
-	else if (keycode == 1)
+	else if (keycode == KEY_S)
 		move(&info->win, &info->map, 1, 0);
-	else if (keycode == 0)
+	else if (keycode == KEY_A)
 		move(&info->win, &info->map, 0, -1);
-	else if (keycode == 2)
+	else if (keycode == KEY_D)
 		move(&info->win, &info->map, 0, 1);
-	else if (keycode == 53)
+	else if (keycode == KEY_ESC)
 		close_win(&info->win);
 	print_map(info);
 	return (0);

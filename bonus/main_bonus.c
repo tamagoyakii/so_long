@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 16:29:30 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 23:42:52 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ int	close_win(t_win *win)
 void	show_win(t_info *info)
 {
 	info->win.mlx_ptr = mlx_init();
+	if (!info->win.mlx_ptr)
+		error_exit(0);
 	info->win.win_ptr = mlx_new_window(info->win.mlx_ptr,
 			info->map.col * PX, info->map.row * PX, "so_long");
+	if (!info->win.win_ptr)
+		error_exit(0);
 	set_img(info->win.mlx_ptr, &info->img);
 	info->map.t = 0;
 	info->map.v = 0;
