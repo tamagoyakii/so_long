@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 22:21:34 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:11:01 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@
 # define IMG_1		"./images/wall.xpm"
 # define IMG_0		"./images/empty.xpm"
 # define IMG_E		"./images/exit.xpm"
+# define IMG_B		"./images/enemy.xpm"
 
 typedef struct s_img{
 	void	*plyr;
-	void	*food;
+	void	*food[4];
 	void	*wall;
 	void	*emty;
-	void	*exit;
+	void	*exit[4];
+	void	*bird;
 }				t_img;
 
 typedef struct s_map{
@@ -78,7 +80,7 @@ void	set_img(void *mlx_ptr, t_img *img);
 void	put_img(t_info *info, int row, int col);
 int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
-void	map_change(t_map *map_info, int row, int col);
+void	map_change(t_map *map_info, int row, int col, char c);
 void	move(t_win *win, t_map *map_info, int row, int col);
 int		key_press(int keycode, t_info *info);
 int		close_win(t_win *win);

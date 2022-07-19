@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 21:10:10 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:10:05 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 # define PX			32
 # define IMG_P		"./images/player.xpm"
-# define IMG_C		"./images/collectible.xpm"
+# define IMG_C		"./images/food.xpm"
 # define IMG_1		"./images/wall.xpm"
 # define IMG_0		"./images/empty.xpm"
 # define IMG_E		"./images/exit.xpm"

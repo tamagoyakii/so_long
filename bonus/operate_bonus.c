@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operate_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 21:44:31 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:45:39 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@ void	alert(t_win *win, t_map *map_info)
 	if (map_info->food == 0)
 	{
 		map_info->step += 1;
-		printf("Steps: %d\nMission Complete!\n", map_info->step);
 		close_win(win);
 	}
 	else
 		printf("There are still a few crickets left.\n");
 }
 
-void	map_change(t_map *map_info, int row, int col)
+void	map_change(t_map *map_info, int row, int col, char c)
 {
-	map_info->map[map_info->p_row][map_info->p_col] = '0';
-	map_info->map[map_info->p_row + row][map_info->p_col + col] = 'P';
+	if (c == 'D')
+		map_info->map[map_info->p_row][map_info->p_col] = '0';
+	else
+	{
+		map_info->map[map_info->p_row][map_info->p_col] = c;
+		map_info->map[map_info->p_row + row][map_info->p_col + col] = 'P';
+	}
 	map_info->p_row += row;
 	map_info->p_col += col;
 	map_info->step += 1;
-	printf("Steps: %d\n", map_info->step);
 }
 
 void	move(t_win *win, t_map *map_info, int row, int col)
@@ -44,11 +47,17 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 		if (to == 'E')
 			alert(win, map_info);
 		if (to == '0')
-			map_change(map_info, row, col);
+			map_change(map_info, row, col, '0');
 		if (to == 'C')
 		{
-			map_change(map_info, row, col);
+			map_change(map_info, row, col, 'B');
 			map_info->food -= 1;
+		}
+		if (to == 'B')
+		{
+			map_change(map_info, row, col, 'D');
+			printf("GAME OVER!\n");
+			close_win(win);
 		}
 	}
 }
@@ -67,12 +76,4 @@ int	key_press(int keycode, t_info *info)
 		close_win(&info->win);
 	print_map(info);
 	return (0);
-}
-
-int	close_win(t_win *win)
-{
-	mlx_clear_window(win->mlx_ptr, win->win_ptr);
-	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	printf("See you later!\n");
-	exit(0);
 }

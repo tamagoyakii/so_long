@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
+#    By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/18 22:01:22 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/19 13:48:55 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = so_long
 BONUS = so_long_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3 
 MLXFLAG = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 RM = rm

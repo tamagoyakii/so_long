@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/18 22:23:49 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:03:41 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ void	error_exit(char *str)
 	else
 		perror("Error\n");
 	exit(1);
+}
+
+int	close_win(t_win *win)
+{
+	mlx_clear_window(win->mlx_ptr, win->win_ptr);
+	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+	printf("See you later!\n");
+	exit(0);
 }
 
 void	show_win(t_info *info)
