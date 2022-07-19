@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 16:56:55 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/16 17:23:22 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:33:18 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+
 typedef struct s_list
 {
 	void			*content;
@@ -69,10 +70,10 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int	ft_find(char *newline, char c);
-int	in_line(char **newline, char **line, int i);
-int	backup(char **newline, char **line, int r);
-int	buf_temp(char *buf, char **newline, int rd_size, int *new_idx);
-int	get_next_line(int fd, char **line);
+int		ft_find(char *newline, char c);
+int		in_line(char **newline, char **line, int i);
+int		backup(char **newline, char **line, int r);
+int		buf_temp(char *buf, char **newline, int rd_size, int *new_idx);
+int		get_next_line(int fd, char **line);
 
 #endif

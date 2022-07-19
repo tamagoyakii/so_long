@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 12:03:41 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:29:30 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	error_exit(char *str)
 	else
 		perror("Error\n");
 	exit(1);
+}
+
+void	game_over(t_map *map_info, t_win *win, int row, int col)
+{
+	map_change(map_info, row, col, 'D');
+	printf("GAME OVER!\n");
+	close_win(win);
 }
 
 int	close_win(t_win *win)
@@ -35,6 +42,8 @@ void	show_win(t_info *info)
 	info->win.win_ptr = mlx_new_window(info->win.mlx_ptr,
 			info->map.col * PX, info->map.row * PX, "so_long");
 	set_img(info->win.mlx_ptr, &info->img);
+	info->map.t = 0;
+	info->map.v = 0;
 	print_map(info);
 	mlx_hook(info->win.win_ptr, 2, 0, key_press, info);
 	mlx_hook(info->win.win_ptr, 17, 0, close_win, &info->win);

@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 14:11:01 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:30:45 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,29 @@
 
 # define PX			32
 # define IMG_P		"./images/player.xpm"
-# define IMG_C		"./images/collectible.xpm"
 # define IMG_1		"./images/wall.xpm"
 # define IMG_0		"./images/empty.xpm"
-# define IMG_E		"./images/exit.xpm"
 # define IMG_B		"./images/enemy.xpm"
+# define IMG_C0		"./images/food.xpm"
+# define IMG_C1		"./images/food2.xpm"
+# define IMG_C2		"./images/food3.xpm"
+# define IMG_C3		"./images/food4.xpm"
+# define IMG_E0		"./images/exit.xpm"
+# define IMG_E1		"./images/exit2.xpm"
+# define IMG_E2		"./images/exit3.xpm"
+# define IMG_E3		"./images/exit4.xpm"
+
+typedef struct s_txt{
+	void	*img;
+}				t_txt;
 
 typedef struct s_img{
 	void	*plyr;
-	void	*food[4];
 	void	*wall;
 	void	*emty;
-	void	*exit[4];
 	void	*bird;
+	t_txt	food[4];
+	t_txt	exit[4];
 }				t_img;
 
 typedef struct s_map{
@@ -54,6 +64,8 @@ typedef struct s_map{
 	int		p_col;
 	int		food;
 	int		step;
+	int		t;
+	int		v;
 }				t_map;
 
 typedef struct s_win{
@@ -68,6 +80,8 @@ typedef struct s_info{
 }				t_info;
 
 void	error_exit(char *str);
+void	game_over(t_map *map_info, t_win *win, int row, int col);
+int		close_win(t_win *win);
 void	show_win(t_info *info);
 int		get_row(char *map_name);
 void	get_map(t_map *map, char *map_name, int fd);
@@ -77,12 +91,13 @@ void	check_boundary(t_map *map);
 void	check_component(t_map *map);
 void	add_count(int *count, t_map *map_info, int x, int y);
 void	set_img(void *mlx_ptr, t_img *img);
+void	texture_change(t_info *info);
+void	bird_patrol(t_info *info, int row, int col);
 void	put_img(t_info *info, int row, int col);
 int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
 void	map_change(t_map *map_info, int row, int col, char c);
 void	move(t_win *win, t_map *map_info, int row, int col);
 int		key_press(int keycode, t_info *info);
-int		close_win(t_win *win);
 
 #endif
