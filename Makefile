@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/18 21:20:07 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/18 22:01:22 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,6 @@ SRCS_BONUS = bonus/main_bonus.c bonus/map_parse_bonus.c \
 OBJS = $(SRCS:.c=.o)
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
-VPATH = $(shell ls -R)
 
 all : $(NAME)
 
