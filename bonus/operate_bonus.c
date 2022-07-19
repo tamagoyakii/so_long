@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 16:29:52 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:18:08 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@ void	map_change(t_map *map_info, int row, int col, char c)
 
 void	move(t_win *win, t_map *map_info, int row, int col)
 {
-	if (map_info->map[map_info->p_row + row][map_info->p_col + col] != '1')
+	char	to;
+
+	to = map_info->map[map_info->p_row + row][map_info->p_col + col];
+	if (to != '1')
 	{
-		if (map_info->map[map_info->p_row + row][map_info->p_col + col] == 'E')
+		if (to == 'E')
 			alert(win, map_info);
-		if (map_info->map[map_info->p_row + row][map_info->p_col + col] == '0')
+		else if (to == '0')
 			map_change(map_info, row, col, '0');
-		if (map_info->map[map_info->p_row + row][map_info->p_col + col] == 'C')
+		else if (to == 'C')
 		{
 			if (!map_info->v)
 			{
@@ -56,7 +59,7 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 				map_change(map_info, row, col, '0');
 			map_info->food -= 1;
 		}
-		if (map_info->map[map_info->p_row + row][map_info->p_col + col] == 'B')
+		else if (to == 'B')
 			game_over(map_info, win, row, col);
 	}
 }
