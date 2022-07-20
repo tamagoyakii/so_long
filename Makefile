@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+         #
+#    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/19 13:48:55 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/07/21 01:21:56 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS = main.c map_parse.c map_check.c map_print.c operate.c
 
 SRCS_BONUS = bonus/main_bonus.c bonus/map_parse_bonus.c \
 						bonus/map_check_bonus.c bonus/map_print_bonus.c \
-						bonus/operate_bonus.c
+						bonus/operate_bonus.c bonus/texture_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
