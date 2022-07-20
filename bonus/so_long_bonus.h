@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 16:30:45 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:33:52 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define IMG_P		"./images/player.xpm"
 # define IMG_1		"./images/wall.xpm"
 # define IMG_0		"./images/empty.xpm"
-# define IMG_B		"./images/enemy.xpm"
+# define IMG_BL		"./images/bird_l.xpm"
+# define IMG_BR		"./images/bird_r.xpm"
 # define IMG_C0		"./images/food.xpm"
 # define IMG_C1		"./images/food2.xpm"
 # define IMG_C2		"./images/food3.xpm"
@@ -51,7 +52,7 @@ typedef struct s_img{
 	void	*plyr;
 	void	*wall;
 	void	*emty;
-	void	*bird;
+	t_txt	bird[2];
 	t_txt	food[4];
 	t_txt	exit[4];
 }				t_img;
@@ -65,7 +66,8 @@ typedef struct s_map{
 	int		food;
 	int		step;
 	int		t;
-	int		v;
+	int		b;
+	int		dir;
 }				t_map;
 
 typedef struct s_win{
@@ -91,13 +93,14 @@ void	check_boundary(t_map *map);
 void	check_component(t_map *map);
 void	add_count(int *count, t_map *map_info, int x, int y);
 void	set_img(void *mlx_ptr, t_img *img);
-void	texture_change(t_info *info);
-void	bird_patrol(t_info *info, int row, int col);
+void	bird_patrol(t_win *win, t_map *map, int row, int col);
 void	put_img(t_info *info, int row, int col);
 int		print_map(t_info *info);
 void	alert(t_win *win, t_map *map_info);
 void	map_change(t_map *map_info, int row, int col, char c);
 void	move(t_win *win, t_map *map_info, int row, int col);
 int		key_press(int keycode, t_info *info);
+void	texture_change(t_info *info);
+void	bird_dir_change(t_map *map);
 
 #endif

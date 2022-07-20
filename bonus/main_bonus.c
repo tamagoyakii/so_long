@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 23:42:52 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:42:29 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	show_win(t_info *info)
 		error_exit(0);
 	set_img(info->win.mlx_ptr, &info->img);
 	info->map.t = 0;
-	info->map.v = 0;
+	info->map.b = 2;
+	info->map.dir = 1;
 	print_map(info);
 	mlx_hook(info->win.win_ptr, 2, 0, key_press, info);
 	mlx_hook(info->win.win_ptr, 17, 0, close_win, &info->win);

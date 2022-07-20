@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:35:11 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/19 23:49:01 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:43:44 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	move(t_win *win, t_map *map_info, int row, int col)
 			map_change(map_info, row, col, '0');
 		else if (to == 'C')
 		{
-			if (!map_info->v)
+			if (map_info->b == 2)
 			{
+				map_info->b = 0;
 				map_change(map_info, row, col, 'B');
-				map_info->v = 1;
 			}
 			else
 				map_change(map_info, row, col, '0');
