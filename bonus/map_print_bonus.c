@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:48:58 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/21 01:39:41 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:58:47 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	bird_patrol(t_win *win, t_map *map, int row, int col)
 		}
 		else
 			bird_dir_change(map);
-		printf("%d, %d \n", map->dir, map->b);
 		idx = 0;
 	}
 }
