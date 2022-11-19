@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/21 01:33:52 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:39:26 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define X_EVENT_KEY_PRESS	2
+# define ON_KEYDOWN	2
+# define ON_DESTROY 17
 
 # define KEY_ESC	53
 # define KEY_W		13

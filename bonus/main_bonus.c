@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:52:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/07/21 01:42:29 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:39:41 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	show_win(t_info *info)
 	info->map.b = 2;
 	info->map.dir = 1;
 	print_map(info);
-	mlx_hook(info->win.win_ptr, 2, 0, key_press, info);
-	mlx_hook(info->win.win_ptr, 17, 0, close_win, &info->win);
+	mlx_hook(info->win.win_ptr, ON_KEYDOWN, 0, key_press, info);
+	mlx_hook(info->win.win_ptr, ON_DESTROY, 0, close_win, &info->win);
 	mlx_loop_hook(info->win.mlx_ptr, print_map, info);
 	mlx_loop(info->win.mlx_ptr);
 }
@@ -64,8 +64,7 @@ int	main(int argc, char **argv)
 	{
 		map_parse(&info, argv[1]);
 		show_win(&info);
+		return (0);
 	}
-	else
-		error_exit("Wrong Parameters");
-	return (0);
+	error_exit("Wrong Parameters");
 }
