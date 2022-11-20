@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:29:08 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/11/19 17:40:37 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/11/20 16:13:52 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_img{
 	void	*wall;
 	void	*emty;
 	void	*exit;
-}				t_img;
+}	t_img;
 
 typedef struct s_map{
 	char	**map;
@@ -53,18 +53,18 @@ typedef struct s_map{
 	int		p_col;
 	int		food;
 	int		step;
-}				t_map;
+}	t_map;
 
 typedef struct s_win{
 	void	*mlx_ptr;
 	void	*win_ptr;
-}				t_win;
+}	t_win;
 
 typedef struct s_info{
-	t_map	map;
-	t_win	win;
-	t_img	img;
-}				t_info;
+	struct s_map	map;
+	struct s_win	win;
+	struct s_img	img;
+}	t_info;
 
 void	error_exit(char *str);
 void	show_win(t_info *info);
