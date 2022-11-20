@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 13:48:07 by jihyukim          #+#    #+#              #
-#    Updated: 2022/07/21 01:21:56 by jihyukim         ###   ########.fr        #
+#    Updated: 2022/11/20 15:42:44 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ MLXLIB = $(MLX_DIR)/libmlx.a
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = main.c map_parse.c map_check.c map_print.c operate.c
+SRCS = main.c parse.c check.c draw.c operate.c
 
-SRCS_BONUS = bonus/main_bonus.c bonus/map_parse_bonus.c \
-						bonus/map_check_bonus.c bonus/map_print_bonus.c \
-						bonus/operate_bonus.c bonus/texture_bonus.c
+SRCS_BONUS = bonus/main_bonus.c bonus/parse_bonus.c \
+			bonus/check_bonus.c bonus/draw_bonus.c \
+			bonus/operate_bonus.c bonus/texture_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
